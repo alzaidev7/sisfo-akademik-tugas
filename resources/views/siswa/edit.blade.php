@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'Edit Siswa - SISFO Akademik')
-
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -50,6 +48,7 @@
             @csrf
             @method('PUT')
 
+            {{-- NIS --}}
             <div class="form-group">
 
                 <label for="nis">
@@ -61,10 +60,15 @@
                        id="nis"
                        class="form-control"
                        value="{{ old('nis', $siswa->nis) }}"
+                       placeholder="Masukkan NIS"
+                       inputmode="numeric"
+                       pattern="[0-9]+"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        required>
 
             </div>
 
+            {{-- Nama Siswa --}}
             <div class="form-group">
 
                 <label for="nama_siswa">
@@ -80,6 +84,7 @@
 
             </div>
 
+            {{-- Jenis Kelamin --}}
             <div class="form-group">
 
                 <label for="jenis_kelamin">
@@ -105,6 +110,7 @@
 
             </div>
 
+            {{-- Kelas --}}
             <div class="form-group">
 
                 <label for="kelas_id">
@@ -135,6 +141,7 @@
 
             </div>
 
+            {{-- No HP --}}
             <div class="form-group">
 
                 <label for="no_hp">
@@ -145,7 +152,11 @@
                        name="no_hp"
                        id="no_hp"
                        class="form-control"
-                       value="{{ old('no_hp', $siswa->no_hp) }}">
+                       value="{{ old('no_hp', $siswa->no_hp) }}"
+                       placeholder="Contoh: 081234567890"
+                       inputmode="numeric"
+                       pattern="[0-9]+"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 
             </div>
 

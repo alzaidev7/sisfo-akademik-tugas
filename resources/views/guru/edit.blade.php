@@ -50,6 +50,7 @@
             @csrf
             @method('PUT')
 
+            {{-- NIP --}}
             <div class="form-group">
 
                 <label for="nip">
@@ -61,10 +62,15 @@
                        id="nip"
                        class="form-control"
                        value="{{ old('nip', $guru->nip) }}"
+                       placeholder="Masukkan NIP"
+                       inputmode="numeric"
+                       pattern="[0-9]+"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        required>
 
             </div>
 
+            {{-- Nama Guru --}}
             <div class="form-group">
 
                 <label for="nama_guru">
@@ -76,10 +82,12 @@
                        id="nama_guru"
                        class="form-control"
                        value="{{ old('nama_guru', $guru->nama_guru) }}"
+                       placeholder="Masukkan nama guru"
                        required>
 
             </div>
 
+            {{-- Jenis Kelamin --}}
             <div class="form-group">
 
                 <label for="jenis_kelamin">
@@ -105,6 +113,7 @@
 
             </div>
 
+            {{-- Email --}}
             <div class="form-group">
 
                 <label for="email">
@@ -115,10 +124,12 @@
                        name="email"
                        id="email"
                        class="form-control"
-                       value="{{ old('email', $guru->email) }}">
+                       value="{{ old('email', $guru->email) }}"
+                       placeholder="Contoh: guru@sekolah.sch.id">
 
             </div>
 
+            {{-- No HP --}}
             <div class="form-group">
 
                 <label for="no_hp">
@@ -129,18 +140,26 @@
                        name="no_hp"
                        id="no_hp"
                        class="form-control"
-                       value="{{ old('no_hp', $guru->no_hp) }}">
+                       value="{{ old('no_hp', $guru->no_hp) }}"
+                       placeholder="Contoh: 081234567890"
+                       inputmode="numeric"
+                       pattern="[0-9]+"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 
             </div>
 
             <button type="submit" class="btn btn-primary">
+
                 <i class="fas fa-save"></i>
                 Simpan Perubahan
+
             </button>
 
             <a href="{{ route('guru.index') }}"
                class="btn btn-secondary">
+
                 Batal
+
             </a>
 
         </form>

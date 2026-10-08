@@ -25,11 +25,11 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nis' => 'required|unique:siswa,nis',
+            'nis' => 'required|numeric|unique:siswa,nis',
             'nama_siswa' => 'required',
             'jenis_kelamin' => 'required',
             'kelas_id' => 'required|exists:kelas,id',
-            'no_hp' => 'nullable',
+            'no_hp' => 'nullable|numeric',
         ]);
 
         Siswa::create([
@@ -61,11 +61,11 @@ class SiswaController extends Controller
     public function update(Request $request, Siswa $siswa)
     {
         $request->validate([
-            'nis' => 'required|unique:siswa,nis,' . $siswa->id,
+            'nis' => 'required|numeric|unique:siswa,nis,' . $siswa->id,
             'nama_siswa' => 'required',
             'jenis_kelamin' => 'required',
             'kelas_id' => 'required|exists:kelas,id',
-            'no_hp' => 'nullable',
+            'no_hp' => 'nullable|numeric',
         ]);
 
         $siswa->update([

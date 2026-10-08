@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Guru;
 use Illuminate\Http\Request;
 
@@ -22,10 +21,10 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip' => 'required|unique:guru,nip',
+            'nip' => 'required|numeric|unique:guru,nip',
             'nama_guru' => 'required',
             'jenis_kelamin' => 'required',
-            'no_hp' => 'nullable',
+            'no_hp' => 'nullable|numeric',
             'email' => 'nullable|email',
         ]);
 
@@ -54,10 +53,10 @@ class GuruController extends Controller
     public function update(Request $request, Guru $guru)
     {
         $request->validate([
-            'nip' => 'required|unique:guru,nip,' . $guru->id,
+            'nip' => 'required|numeric|unique:guru,nip,' . $guru->id,
             'nama_guru' => 'required',
             'jenis_kelamin' => 'required',
-            'no_hp' => 'nullable',
+            'no_hp' => 'nullable|numeric',
             'email' => 'nullable|email',
         ]);
 

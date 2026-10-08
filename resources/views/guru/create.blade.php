@@ -51,6 +51,7 @@
 
             @csrf
 
+            {{-- NIP --}}
             <div class="form-group">
 
                 <label for="nip">
@@ -63,10 +64,14 @@
                        class="form-control"
                        value="{{ old('nip') }}"
                        placeholder="Masukkan NIP"
+                       inputmode="numeric"
+                       pattern="[0-9]+"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        required>
 
             </div>
 
+            {{-- Nama Guru --}}
             <div class="form-group">
 
                 <label for="nama_guru">
@@ -83,6 +88,7 @@
 
             </div>
 
+            {{-- Jenis Kelamin --}}
             <div class="form-group">
 
                 <label for="jenis_kelamin">
@@ -112,6 +118,7 @@
 
             </div>
 
+            {{-- Email --}}
             <div class="form-group">
 
                 <label for="email">
@@ -127,6 +134,7 @@
 
             </div>
 
+            {{-- No HP --}}
             <div class="form-group">
 
                 <label for="no_hp">
@@ -138,18 +146,25 @@
                        id="no_hp"
                        class="form-control"
                        value="{{ old('no_hp') }}"
-                       placeholder="Contoh: 081234567890">
+                       placeholder="Contoh: 081234567890"
+                       inputmode="numeric"
+                       pattern="[0-9]+"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 
             </div>
 
             <button type="submit" class="btn btn-primary">
+
                 <i class="fas fa-save"></i>
                 Simpan
+
             </button>
 
             <a href="{{ route('guru.index') }}"
                class="btn btn-secondary">
+
                 Batal
+
             </a>
 
         </form>
