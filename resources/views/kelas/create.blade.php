@@ -1,0 +1,110 @@
+@extends('layouts.app')
+
+@section('title', 'Tambah Kelas - SISFO Akademik')
+
+@section('content')
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Tambah Kelas</h1>
+
+    <a href="{{ route('kelas.index') }}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left fa-sm"></i>
+        Kembali
+    </a>
+</div>
+
+<div class="card shadow mb-4">
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            Form Tambah Kelas
+        </h6>
+    </div>
+
+    <div class="card-body">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Terjadi kesalahan:</strong>
+
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ route('kelas.store') }}" method="POST">
+
+            @csrf
+
+            <div class="form-group">
+                <label for="nama_kelas">Nama Kelas</label>
+
+                <input type="text"
+                       name="nama_kelas"
+                       id="nama_kelas"
+                       class="form-control"
+                       value="{{ old('nama_kelas') }}"
+                       placeholder="Contoh: XI RPL 1"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="jurusan">Jurusan</label>
+
+                <input type="text"
+                       name="jurusan"
+                       id="jurusan"
+                       class="form-control"
+                       value="{{ old('jurusan') }}"
+                       placeholder="Contoh: RPL"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="tingkat">Tingkat</label>
+
+                <select name="tingkat"
+                        id="tingkat"
+                        class="form-control"
+                        required>
+
+                    <option value="">-- Pilih Tingkat --</option>
+
+                    <option value="X"
+                        {{ old('tingkat') == 'X' ? 'selected' : '' }}>
+                        X
+                    </option>
+
+                    <option value="XI"
+                        {{ old('tingkat') == 'XI' ? 'selected' : '' }}>
+                        XI
+                    </option>
+
+                    <option value="XII"
+                        {{ old('tingkat') == 'XII' ? 'selected' : '' }}>
+                        XII
+                    </option>
+
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i>
+                Simpan
+            </button>
+
+            <a href="{{ route('kelas.index') }}"
+               class="btn btn-secondary">
+                Batal
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+@endsection
